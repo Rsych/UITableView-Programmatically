@@ -10,24 +10,30 @@ import UIKit
 class NewsListVC: UIViewController {
     let tableView = UITableView()
     var safeArea: UILayoutGuide!
-    let newsList = ["1", "2", "3", "4", "5", "6"]
+    var amiiboList = [Amiibo]()
     
     override func viewDidLoad() {
 //        view.backgroundColor = .red
         safeArea = view.layoutMarginsGuide
-        
-        tableView.dataSource = self
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
         setupView()
+        
+        let anomyousFunction = { (fetchAmiiboList: [Amiibo]) in
+            DispatchQueue.main.async {
+            self.amiiboList = fetchAmiiboList
+            self.tableView.reloadData()
+            }
+        }
+        
+        AmiiboAPI.shared.fetchAmiiboList(completion: anomyousFunction)
     }
     
     // MARK: - Setup View
     func setupView() {
         // Always add the UIView First before setting constraints
         view.addSubview(tableView)
+        tableView.dataSource = self
         
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -40,14 +46,14 @@ class NewsListVC: UIViewController {
 
 extension NewsListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsList.count
+        return amiiboList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let name = newsList[indexPath.row]
+        let amiibo = amiiboList[indexPath.row]
         
-        cell.textLabel?.text = name
+        cell.textLabel?.text = amiibo.name
         return cell
     }
     

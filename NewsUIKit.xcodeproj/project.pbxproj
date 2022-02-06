@@ -12,6 +12,7 @@
 		71C0A52D27B05A8100CEBFD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0A52C27B05A8100CEBFD0 /* ViewController.swift */; };
 		71C0A53227B05A8200CEBFD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71C0A53127B05A8200CEBFD0 /* Assets.xcassets */; };
 		71C0A53527B05A8200CEBFD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71C0A53327B05A8200CEBFD0 /* LaunchScreen.storyboard */; };
+		71C0A57D27B06CFC00CEBFD0 /* AmiiboAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0A57C27B06CFC00CEBFD0 /* AmiiboAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		71C0A53127B05A8200CEBFD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71C0A53427B05A8200CEBFD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71C0A53627B05A8200CEBFD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71C0A57C27B06CFC00CEBFD0 /* AmiiboAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmiiboAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				71C0A52827B05A8100CEBFD0 /* AppDelegate.swift */,
 				71C0A52A27B05A8100CEBFD0 /* SceneDelegate.swift */,
 				71C0A52C27B05A8100CEBFD0 /* ViewController.swift */,
+				71C0A57C27B06CFC00CEBFD0 /* AmiiboAPI.swift */,
 				71C0A53127B05A8200CEBFD0 /* Assets.xcassets */,
 				71C0A53327B05A8200CEBFD0 /* LaunchScreen.storyboard */,
 				71C0A53627B05A8200CEBFD0 /* Info.plist */,
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71C0A52D27B05A8100CEBFD0 /* ViewController.swift in Sources */,
+				71C0A57D27B06CFC00CEBFD0 /* AmiiboAPI.swift in Sources */,
 				71C0A52927B05A8100CEBFD0 /* AppDelegate.swift in Sources */,
 				71C0A52B27B05A8100CEBFD0 /* SceneDelegate.swift in Sources */,
 			);
