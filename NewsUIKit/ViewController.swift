@@ -10,12 +10,15 @@ import UIKit
 class NewsListVC: UIViewController {
     let tableView = UITableView()
     var safeArea: UILayoutGuide!
+    let newsList = ["1", "2", "3", "4", "5", "6"]
     
     override func viewDidLoad() {
-        view.backgroundColor = .red
+//        view.backgroundColor = .red
         safeArea = view.layoutMarginsGuide
         
         tableView.dataSource = self
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         setupView()
     }
@@ -37,11 +40,15 @@ class NewsListVC: UIViewController {
 
 extension NewsListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return newsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let name = newsList[indexPath.row]
+        
+        cell.textLabel?.text = name
+        return cell
     }
     
     
