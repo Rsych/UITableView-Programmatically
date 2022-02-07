@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		716803B227B1AFDF00A8AB6A /* AmiiboCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716803B127B1AFDF00A8AB6A /* AmiiboCell.swift */; };
+		716803B427B1BB5300A8AB6A /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716803B327B1BB5300A8AB6A /* CustomImageView.swift */; };
 		71C0A52927B05A8100CEBFD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0A52827B05A8100CEBFD0 /* AppDelegate.swift */; };
 		71C0A52B27B05A8100CEBFD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0A52A27B05A8100CEBFD0 /* SceneDelegate.swift */; };
 		71C0A52D27B05A8100CEBFD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C0A52C27B05A8100CEBFD0 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		716803B127B1AFDF00A8AB6A /* AmiiboCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmiiboCell.swift; sourceTree = "<group>"; };
+		716803B327B1BB5300A8AB6A /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		71C0A52527B05A8100CEBFD0 /* NewsUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C0A52827B05A8100CEBFD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71C0A52A27B05A8100CEBFD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				71C0A52827B05A8100CEBFD0 /* AppDelegate.swift */,
 				71C0A52A27B05A8100CEBFD0 /* SceneDelegate.swift */,
 				71C0A52C27B05A8100CEBFD0 /* ViewController.swift */,
+				716803B327B1BB5300A8AB6A /* CustomImageView.swift */,
 				71C0A57C27B06CFC00CEBFD0 /* AmiiboAPI.swift */,
 				716803B127B1AFDF00A8AB6A /* AmiiboCell.swift */,
 				71C0A58027B077A800CEBFD0 /* AmiiboServices.swift */,
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71C0A52D27B05A8100CEBFD0 /* ViewController.swift in Sources */,
+				716803B427B1BB5300A8AB6A /* CustomImageView.swift in Sources */,
 				71C0A57D27B06CFC00CEBFD0 /* AmiiboAPI.swift in Sources */,
 				71C0A57F27B0778600CEBFD0 /* NetworkManager.swift in Sources */,
 				716803B227B1AFDF00A8AB6A /* AmiiboCell.swift in Sources */,

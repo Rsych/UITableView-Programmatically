@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class AmiiboCell: UITableViewCell {
-    let imageV = UIImageView()
+    let imageV = CustomImageView()
     var safeArea: UILayoutGuide!
     let nameLabel = UILabel()
     let gameSeriesLabel = UILabel()
@@ -40,7 +40,7 @@ class AmiiboCell: UITableViewCell {
         imageV.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         imageV.widthAnchor.constraint(equalToConstant: 44).isActive = true
         imageV.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        imageV.backgroundColor = .red
+        
     }
     
     func setUpNameLabel() {

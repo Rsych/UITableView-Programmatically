@@ -61,6 +61,10 @@ extension NewsListVC: UITableViewDataSource {
         
         amiiboCell.nameLabel.text = amiibo.name
         amiiboCell.gameSeriesLabel.text = amiibo.gameSeries
+        
+        if let url = URL(string: amiibo.image) {
+            amiiboCell.imageV.loadImage(from: url)
+        }
         return cell
     }
 }
