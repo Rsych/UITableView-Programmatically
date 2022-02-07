@@ -6,14 +6,27 @@
 //
 
 import Foundation
+import Combine
 
 final class AmiiboAPI {
-    
     static let shared = AmiiboAPI()
+    private var anyCancellable = Set<AnyCancellable>()
+    
+    func fetch<T: Decodable>(_ url: URL, defaultValue: T, completion: @escaping (T) -> Void) {
+        let decoder = JSONDecoder()
+        URLSession.shared.dataTaskPublisher(for: url)
+            .retry(1)
+            .map(\.data)
+            .decode(type: T.self, decoder: decoder)
+            .replaceError(with: defaultValue)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: completion)
+            .store(in: &anyCancellable)
+    }
+    
     // @escaping means that don't terminate the function life time until the @escaping closure has finished execution in the opposite of nonEscaping closure the function can be terminated before the closure finishes execution Ex:
     func fetchAmiiboList(completion: @escaping ([Amiibo]) -> ()) {
         let url = URL(string: "https://amiiboapi.com/api/amiibo/")!
-        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
                 fatalError(error?.localizedDescription ?? "Data was nil")
