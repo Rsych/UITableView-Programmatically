@@ -10,7 +10,7 @@ import UIKit
 class NewsListVC: UIViewController {
     let tableView = UITableView()
     var safeArea: UILayoutGuide!
-    var amiiboList = [Amiibo]()
+    var amiiboList = [AmiiboForView]()
     let url = URL(string: "https://amiiboapi.com/api/amiibo/")!
     
     override func viewDidLoad() {
@@ -20,7 +20,10 @@ class NewsListVC: UIViewController {
         
         let anomyousFunction = { (fetchAmiiboList: [Amiibo]) in
             DispatchQueue.main.async {
-                self.amiiboList = fetchAmiiboList
+                let amiiboForViewList = fetchAmiiboList.map { amiibo in
+                    return AmiiboForView(name: amiibo.name, gameSeries: amiibo.gameSeries, imageURL: amiibo.image, count: 0)
+                }
+                self.amiiboList = amiiboForViewList
                 self.tableView.reloadData()
                 print(fetchAmiiboList.count)
             }
@@ -62,8 +65,9 @@ extension NewsListVC: UITableViewDataSource {
         
         amiiboCell.nameLabel.text = amiibo.name
         amiiboCell.gameSeriesLabel.text = amiibo.gameSeries
+        amiiboCell.owningCountLabel.text = String(amiibo.count)
         
-        if let url = URL(string: amiibo.image) {
+        if let url = URL(string: amiibo.imageURL) {
             amiiboCell.imageV.loadImage(from: url)
         }
         return cell
@@ -73,7 +77,7 @@ extension NewsListVC: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension NewsListVC: UITableViewDelegate {
-    // UISwipe
+    // Trailing UISwipe
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
@@ -92,5 +96,21 @@ extension NewsListVC: UITableViewDelegate {
         }
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let countAction = UIContextualAction(style: .normal, title: "Count up") { (action, view, completionHandler) in
+            let currentCount = self.amiiboList[indexPath.row].count
+            self.amiiboList[indexPath.row].count = currentCount + 1
+            
+            if let cell = self.tableView.cellForRow(at: indexPath) as? AmiiboCell {
+                cell.owningCountLabel.text = String(self.amiiboList[indexPath.row].count)
+            }
+            
+            completionHandler(true)
+        }
+        
+        return UISwipeActionsConfiguration(actions: [countAction])
     }
 }
