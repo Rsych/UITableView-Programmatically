@@ -35,6 +35,7 @@ class AmiiboCell: UITableViewCell {
     func setUpImageView() {
         addSubview(imageV)
         
+        imageV.contentMode = .scaleAspectFit
         imageV.translatesAutoresizingMaskIntoConstraints = false
         imageV.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
         imageV.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true

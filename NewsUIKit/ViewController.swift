@@ -36,6 +36,7 @@ class NewsListVC: UIViewController {
         // Always add the UIView First before setting constraints
         view.addSubview(tableView)
         tableView.dataSource = self
+        tableView.delegate = self
         
         tableView.register(AmiiboCell.self, forCellReuseIdentifier: "cell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,5 +67,30 @@ extension NewsListVC: UITableViewDataSource {
             amiiboCell.imageV.loadImage(from: url)
         }
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension NewsListVC: UITableViewDelegate {
+    // UISwipe
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+            
+            // example: If name is Luigi, don't delete :)
+            
+            if self.amiiboList[indexPath.row].name == "Luigi" {
+                completionHandler(false)
+            } else {
+                self.amiiboList.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                
+                completionHandler(true)
+            }
+            
+        }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
